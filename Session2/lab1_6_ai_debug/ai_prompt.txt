@@ -1,0 +1,12 @@
+Prompt:
+This asyncio TCP server sometimes hangs and does not respond to clients under load.
+Please identify bugs and suggest fixes and optimizations.
+
+Code:
+(paste buggy_async.py here)
+
+AI Response:
+- reader.read() must be awaited.
+- writer.drain() should be awaited after write.
+- writer should be properly closed to release resources.
+- Exception handling is recommended.

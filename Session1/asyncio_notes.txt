@@ -1,0 +1,47 @@
+# Ghi chú asyncio (Week 1 Homework)
+
+1. asyncio là gì?
+`asyncio` là thư viện của Python dùng để viết chương trình **bất đồng bộ** (asynchronous) bằng cú pháp `async/await`.
+Nó phù hợp nhất với các tác vụ **I/O-bound** như: network, đọc/ghi file, gọi API… (tức là thường xuyên “chờ”).
+
+---
+
+2. Vì sao cần async trong lập trình mạng?
+Trong server mạng, phần tốn thời gian thường không phải CPU mà là **chờ dữ liệu từ client** (recv), **chờ gửi xong** (send), hoặc **chờ kết nối**.
+
+Nếu dùng mô hình:
+- **1 connection = 1 thread**: dễ viết nhưng tốn RAM, tốn context switching, khó scale lớn.
+- **async**: 1 event loop có thể xử lý **rất nhiều kết nối** vì khi một kết nối đang “chờ”, CPU chuyển sang xử lý kết nối khác.
+
+=> Async giúp **scale tốt** (có thể xử lý hàng nghìn / chục nghìn connection nếu thiết kế đúng).
+
+---
+
+3. Event loop là gì?
+**Event loop** là “bộ điều phối” trung tâm của asyncio.
+Nó:
+- Theo dõi các sự kiện I/O (socket có dữ liệu, timer hết hạn…)
+- Lập lịch chạy các coroutine
+- Cho phép chương trình “chuyển qua chuyển lại” giữa các task mà không cần tạo nhiều thread
+
+Ví dụ chạy event loop:
+- `asyncio.run(main())` sẽ tạo và chạy event loop để chạy coroutine `main()`.
+
+---
+
+4. Coroutine là gì?
+**Coroutine** là một hàm được khai báo bằng `async def`.
+
+Ví dụ:
+```python
+async def handle_client():
+    ...
+
+5. await dùng để làm gì?
+await dùng để chờ một coroutine khác (hoặc một “awaitable”) hoàn thành mà không chặn toàn bộ chương trình.
+
+    Khác với code đồng bộ:
+
+    Đồng bộ: chờ là đứng yên, không làm gì được khác
+
+    Async: chờ xong thì quay lại, còn trong lúc chờ event loop cho chạy task khác

@@ -1,0 +1,11 @@
+2026-01-22 08:24:46,385 | INFO | Starting TCP Echo Server
+2026-01-22 08:24:46,387 | INFO | Listening on 127.0.0.1:9000
+2026-01-22 08:25:13,321 | INFO | Client connected: ('127.0.0.1', 58597)
+2026-01-22 08:25:20,602 | INFO | Received from ('127.0.0.1', 58597): Hello hi
+2026-01-22 08:25:42,328 | INFO | Received from ('127.0.0.1', 58597): im maria
+2026-01-22 08:27:49,854 | INFO | Received from ('127.0.0.1', 58597): how are you today?
+2026-01-22 08:29:31,603 | INFO | Starting TCP Echo Server
+2026-01-22 08:29:31,605 | INFO | Listening on 127.0.0.1:9000
+2026-01-22 08:29:40,433 | INFO | Client connected: ('127.0.0.1', 58624)
+2026-01-22 08:30:02,292 | INFO | Received: hi A
+2026-01-22 08:30:19,103 | INFO | Received: how are you today
