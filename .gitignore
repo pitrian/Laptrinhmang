@@ -1,0 +1,14 @@
+# Python virtual environment
+.venv/
+
+# Dataset files (too large)
+*.parquet
+
+# Model files
+*.pkl
+
+# Notebook checkpoints
+.ipynb_checkpoints/
+
+# Cache
+__pycache__/
